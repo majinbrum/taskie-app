@@ -1,0 +1,231 @@
+/**TODO **********************App Header/***********************/
+header.app-header {
+	display: flex;
+	flex-direction: column;
+	row-gap: 2rem;
+}
+
+header div.header-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header div.header-title button.color-mode {
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	background-color: var(--body);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+}
+
+header div.header-title i {
+	color: var(--tertiary);
+}
+
+header div.header-taskie {
+	padding: 1rem 1rem 0 1rem;
+
+	background-color: var(--headerBg);
+	color: var(--headerTxt);
+	height: 12rem;
+	border-radius: 2rem;
+	box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header div.header-taskie .header-img,
+header div.header-taskie .header-img img {
+	height: 100%;
+}
+
+/**TODO **********************Task List/***********************/
+
+section.list-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+ul.tasks-list {
+	display: flex;
+	flex-direction: column;
+	row-gap: 2rem;
+}
+
+/*TODO **********************Task/***********************/
+li.task {
+	padding: 1rem;
+
+	background-color: var(--taskBg);
+	min-height: 4rem;
+	border-radius: 1rem;
+
+	box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	column-gap: 1.8rem;
+
+	word-break: break-word;
+}
+
+.task-title {
+	color: var(--body);
+	width: 100%;
+}
+
+.task .edit-box {
+	display: flex;
+	column-gap: 1rem;
+}
+
+/*TODO **********************New Task Menu/***********************/
+
+.new-task-btn {
+	position: absolute;
+	bottom: 0;
+	left: calc(50% - 1.5rem);
+
+	background-color: var(--secondary);
+	width: 3rem;
+	height: 3rem;
+	border: 0;
+	border-radius: 50%;
+	box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	transition-property: transform;
+	transform: scale(1);
+	transition-duration: 0.3s;
+}
+
+.new-task-btn:hover {
+	transition-property: transform;
+	transform: scale(1.2);
+	transition-duration: 0.3s;
+}
+
+/* .new-task-btn {
+	position: absolute;
+	bottom: 0;
+	left: calc(50% - 1.5rem);
+
+	width: 3rem;
+	height: 3rem;
+	border: 0;
+	border-radius: 50%;
+	box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+} */
+
+.new-task-btn i {
+	color: var(--appBg);
+	font-size: 24px;
+}
+
+.new-task-menu {
+	position: absolute;
+	bottom: 0;
+
+	display: flex;
+	flex-direction: column;
+	row-gap: 1rem;
+
+	width: 100%;
+	background-color: var(--secondary);
+	border-radius: 1rem;
+	padding: 1rem;
+}
+
+.new-task-menu header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: var(--headerTxt);
+}
+
+/*TODO **********************New Task Info/***********************/
+.info-row {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.info-row input.new-task-title,
+.info-row input.edit-task-title {
+	flex-grow: 2;
+
+	height: 3rem;
+	padding: 0.8rem;
+	border-radius: 1rem 0 0 1rem;
+	border: 0;
+
+	font-family: inherit;
+	font-size: 14px;
+}
+
+.info-row input.new-task-title {
+	background-color: var(--taskBg);
+}
+
+/* .task .info-row {
+	width: 100%;
+} */
+
+.info-row input.edit-task-title {
+	background-color: var(--editTaskBg);
+	width: 100%;
+}
+
+/* 
+.info-row input.new-task-title:focus,
+input.edit-task-title:focus {
+	outline: none;
+} */
+
+.info-row .add-task-btn,
+.info-row .edit-task-btn {
+	padding: 0 0.5rem;
+	border-radius: 0 1rem 1rem 0;
+	border: 0;
+
+	font-size: 32px;
+}
+
+.info-row .add-task-btn {
+	color: var(--secondary);
+	background-color: var(--taskBg);
+}
+
+.info-row .edit-task-btn {
+	color: var(--headline);
+	background-color: var(--editTaskBg);
+}
+
+button.check-btn i.fa-solid {
+	color: var(--check);
+}
+
+button.check-btn i.fa-regular {
+	color: var(--uncheck);
+}
+
+.edit-box button i {
+	color: var(--body);
+}

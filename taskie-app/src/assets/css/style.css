@@ -1,0 +1,114 @@
+/* Palette light */
+:root.light-mode {
+	--appBg: #fffffe;
+	--mainBg: #f2eef5;
+	--headerBg: #994ff3;
+	--headerTxt: #fffffe;
+	--taskBg: #f2eef5;
+	--body: #2e2e2e;
+	--check: #bbe6a9;
+	--uncheck: #fe646f;
+	--editTaskBg: #fffffe;
+	--secondary: #994ff3;
+	--tertiary: #fbdd74;
+}
+
+/* Palette light */
+:root.dark-mode {
+	--appBg: #2e2e2e;
+	--mainBg: #16161a;
+	--headerBg: #994ff3;
+	--headerTxt: #fffffe;
+	--taskBg: #72757e;
+	--body: #fffffe;
+	--check: #bbe6a9;
+	--uncheck: #fe646f;
+	--editTaskBg: #2e2e2e;
+	--secondary: #994ff3;
+	--tertiary: #fbdd74;
+}
+
+/* CSS Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+button {
+	border: none;
+	background-color: transparent;
+	outline: none;
+	cursor: pointer;
+	color: inherit;
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: 700;
+}
+
+h2 {
+	font-size: 21px;
+	font-weight: 600;
+}
+
+h3 {
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+h4 {
+	font-size: 18px;
+	font-weight: 300;
+}
+
+p {
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 1.5;
+}
+
+input {
+	color: var(--body);
+}
+
+del {
+	color: var(--body);
+}
+
+/* Generiche  */
+body {
+	font-family: "Inter Tight", sans-serif;
+	background-color: var(--mainBg);
+	color: var(--body);
+}
+
+/* Utilities */
+#root {
+	margin: 0 auto;
+
+	width: 393px;
+	height: 852px;
+	border-radius: 2rem;
+	background-color: var(--appBg);
+	border: 2rem solid var(--appBg);
+
+	display: flex;
+	flex-direction: column;
+	row-gap: 2rem;
+
+	position: relative;
+}
+
+main.app-main {
+	display: flex;
+	flex-direction: column;
+	row-gap: 2rem;
+
+	overflow-y: scroll;
+}
+::-webkit-scrollbar {
+	display: none;
+}
