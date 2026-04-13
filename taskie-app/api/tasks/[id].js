@@ -25,7 +25,11 @@ export default async function handler(req, res) {
 			await query("DELETE FROM tasks WHERE id = $1", [taskId]);
 			return res.status(200).json({ ok: true });
 		} catch (err) {
-			return res.status(500).json({ error: "Internal Server Error" });
+			console.error("DELETE /api/tasks/[id] failed:", err);
+			return res.status(500).json({
+				error: "Internal Server Error",
+				detail: process.env.NODE_ENV === "production" ? undefined : String(err?.message || err),
+			});
 		}
 	}
 
@@ -48,7 +52,11 @@ export default async function handler(req, res) {
 			]);
 			return res.status(200).json(rows[0] ?? null);
 		} catch (err) {
-			return res.status(500).json({ error: "Internal Server Error" });
+			console.error("PUT /api/tasks/[id] failed:", err);
+			return res.status(500).json({
+				error: "Internal Server Error",
+				detail: process.env.NODE_ENV === "production" ? undefined : String(err?.message || err),
+			});
 		}
 	}
 

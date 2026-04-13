@@ -10,7 +10,11 @@ export default async function handler(req, res) {
 		const { rows } = await query("SELECT * FROM tasks WHERE completed = $1 ORDER BY id DESC", [true]);
 		return res.status(200).json(rows);
 	} catch (err) {
-		return res.status(500).json({ error: "Internal Server Error" });
+		console.error("GET /api/completed failed:", err);
+		return res.status(500).json({
+			error: "Internal Server Error",
+			detail: process.env.NODE_ENV === "production" ? undefined : String(err?.message || err),
+		});
 	}
 }
 
