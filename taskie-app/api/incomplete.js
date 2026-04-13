@@ -1,4 +1,5 @@
 import { query } from "./_db.js";
+import { safeErrorDetail } from "./_error.js";
 
 export default async function handler(req, res) {
 	if (req.method !== "GET") {
@@ -11,9 +12,10 @@ export default async function handler(req, res) {
 		return res.status(200).json(rows);
 	} catch (err) {
 		console.error("GET /api/incomplete failed:", err);
+		const detail = safeErrorDetail(err);
 		return res.status(500).json({
 			error: "Internal Server Error",
-			detail: process.env.NODE_ENV === "production" ? undefined : String(err?.message || err),
+			detail,
 		});
 	}
 }
