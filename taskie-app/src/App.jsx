@@ -11,35 +11,19 @@ const App = () => {
 	const [tasksCompleted, setTasksCompleted] = useState([]);
 	const [showCreate, setShowCreate] = useState(false);
 
-	const getTasks = () => {
-		// Fetch incomplete tasks
-		fetch("http://localhost:3001/incomplete")
-			.then((response) => response.json())
-			.then((data) => {
-				// Handle incomplete tasks data
-				setTasks(data);
-				setTasksCount(data.length);
-			});
+	const refreshAll = async () => {
+		const [incompleteRes, completedRes] = await Promise.all([fetch("/api/incomplete"), fetch("/api/completed")]);
+		const [incomplete, completed] = await Promise.all([incompleteRes.json(), completedRes.json()]);
+
+		setTasks(incomplete);
+		setTasksCount(incomplete.length);
+		setTasksCompleted(completed);
+		setTasksCompletedCount(completed.length);
 	};
 
 	useEffect(() => {
-		getTasks();
-	}, [tasks]);
-
-	const getTasksCompleted = () => {
-		// Fetch completed tasks
-		fetch("http://localhost:3001/completed")
-			.then((response) => response.json())
-			.then((data) => {
-				// Handle completed tasks data
-				setTasksCompleted(data);
-				setTasksCompletedCount(data.length);
-			});
-	};
-
-	useEffect(() => {
-		getTasksCompleted();
-	}, [tasksCompleted]);
+		refreshAll();
+	}, []);
 
 	// const getTasks = () => {
 	// 	fetch("http://localhost:3001/")
@@ -57,18 +41,18 @@ const App = () => {
 		<>
 			<Header tasksCount={tasksCount} />
 			<main className="app-main">
-				{tasksCount ? <Tasks tasks={tasks} /> : null}
-				{tasksCompletedCount ? <TasksCompleted tasksCompleted={tasksCompleted} /> : null}
+				{tasksCount ? <Tasks tasks={tasks} onChange={refreshAll} /> : null}
+				{tasksCompletedCount ? <TasksCompleted tasksCompleted={tasksCompleted} onChange={refreshAll} /> : null}
 			</main>
 			{showCreate ? null : (
 				<button
 					className="new-task-btn"
 					onClick={() => setShowCreate(!showCreate)}>
 					{/* <i className="fa-solid fa-circle-plus"></i> */}
-					<i class="fa-solid fa-plus"></i>
+					<i className="fa-solid fa-plus"></i>
 				</button>
 			)}
-			{showCreate ? <Create setShowCreate={setShowCreate} /> : null}
+			{showCreate ? <Create setShowCreate={setShowCreate} onCreate={refreshAll} /> : null}
 		</>
 	);
 };

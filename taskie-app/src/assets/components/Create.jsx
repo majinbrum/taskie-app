@@ -1,21 +1,19 @@
-const Create = ({ setShowCreate }) => {
+const Create = ({ setShowCreate, onCreate }) => {
 	const createTask = () => {
 		let titleInput = document.querySelector("input#title");
 		let title = titleInput.value;
 
 		let completed = false;
 		console.log("title: " + title + ", completed: " + completed);
-		fetch("http://localhost:3001/new-task", {
+		fetch("/api/new-task", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({ title, completed }),
 		})
-			.then((response) => response.text())
-			.then((data) => {
-				console.log(data);
-			});
+			.then((response) => response.json())
+			.then(() => onCreate?.());
 		emptyInput();
 		setShowCreate(false);
 	};

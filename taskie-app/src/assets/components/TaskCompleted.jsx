@@ -1,14 +1,12 @@
 import Check from "./Check";
 
-const Task = ({ id, title, completed, showEdit }) => {
+const Task = ({ id, title, completed, showEdit, onChange }) => {
 	const deleteTask = () => {
-		fetch("http://localhost:3001/tasks/" + id, {
+		fetch("/api/tasks/" + id, {
 			method: "DELETE",
 		})
-			.then((response) => response.text())
-			.then((data) => {
-				console.log(data);
-			});
+			.then((response) => response.json())
+			.then(() => onChange?.());
 	};
 
 	return (
@@ -35,6 +33,7 @@ const Task = ({ id, title, completed, showEdit }) => {
 						id={id}
 						title={title}
 						completedOld={completed}
+						onChange={onChange}
 					/>
 				)}
 			</li>

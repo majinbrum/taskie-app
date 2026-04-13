@@ -1,18 +1,16 @@
-const Check = ({ id, title, completedOld }) => {
+const Check = ({ id, title, completedOld, onChange }) => {
 	const handleCheck = () => {
 		let completed = !completedOld;
 
-		fetch("http://localhost:3001/tasks/" + id, {
+		fetch("/api/tasks/" + id, {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({ title, completed }),
 		})
-			.then((response) => response.text())
-			.then((data) => {
-				console.log(data);
-			});
+			.then((response) => response.json())
+			.then(() => onChange?.());
 	};
 
 	return (

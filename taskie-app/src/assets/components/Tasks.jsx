@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Task from "./Task";
 
-const Tasks = ({ tasks }) => {
+const Tasks = ({ tasks, onChange }) => {
 	const [showEdit, setShowEdit] = useState(false);
 
 	return (
@@ -25,6 +25,7 @@ const Tasks = ({ tasks }) => {
 						title={task.title}
 						completed={task.completed}
 						showEdit={showEdit}
+						onChange={onChange}
 					/>
 				))}
 			</ul>

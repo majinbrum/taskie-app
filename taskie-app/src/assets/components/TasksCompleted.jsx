@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TaskCompleted from "./TaskCompleted";
 
-const TasksCompleted = ({ tasksCompleted }) => {
+const TasksCompleted = ({ tasksCompleted, onChange }) => {
 	const [showEdit, setShowEdit] = useState(false);
 
 	return (
@@ -25,6 +25,7 @@ const TasksCompleted = ({ tasksCompleted }) => {
 						title={taskCompleted.title}
 						completed={taskCompleted.completed}
 						showEdit={showEdit}
+						onChange={onChange}
 					/>
 				))}
 			</ul>
