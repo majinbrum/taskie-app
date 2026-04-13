@@ -1,26 +1,26 @@
 import { useState, useEffect } from "react";
 
 const Header = ({ tasksCount }) => {
-	const [avatarSrc, setAvatarSrc] = useState("./src/assets/img/sorridentetaskie.png");
+	const [avatarSrc, setAvatarSrc] = useState("/img/sorridentetaskie.png");
 	const [headerTitle, setHeaderTitle] = useState("Hello, Hooman!");
 	const [headerText, setHeaderText] = useState("What have you been up to?");
 
 	useEffect(() => {
 		// Adjust avatar and text based on tasksCount
 		if (tasksCount === 0) {
-			setAvatarSrc("./src/assets/img/supataskie.png");
+			setAvatarSrc("/img/supataskie.png");
 			setHeaderTitle("OMG YOU ROCK!!");
 			setHeaderText("No tasks on sight, keep it up!");
 		} else if (tasksCount > 0 && tasksCount <= 3) {
-			setAvatarSrc("./src/assets/img/sorridentetaskie.png");
+			setAvatarSrc("/img/sorridentetaskie.png");
 			setHeaderTitle("You got this!");
 			setHeaderText("C'mon hooman, just do it!");
 		} else if (tasksCount > 3 && tasksCount <= 6) {
-			setAvatarSrc("./src/assets/img/madtaskie.png");
+			setAvatarSrc("/img/madtaskie.png");
 			setHeaderTitle("What have you been up to??!!");
 			setHeaderText("They're piling up, don't lose control!");
 		} else {
-			setAvatarSrc("./src/assets/img/dedtaskie.png");
+			setAvatarSrc("/img/dedtaskie.png");
 			setHeaderTitle("Oh jeez...");
 			setHeaderText(".. .. . . ... .. . . . .. . . ... .. .. . . ... .. . . . .. . ... .. . . ... .. . . . .. . . ... .. .. . . ... .. . . . .. .");
 		}
